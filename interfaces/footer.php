@@ -1,54 +1,25 @@
-<header id="header">
-		<div class="row">
-			<div class=" col-md-5 col-sm-0" >
-				<h5 style="font-style: italic;font-weight: bold;color: #fff;">Hotline: 0707624367</h5>
-			</div>
-			<div class="Logo-Brand col-md-2 col-sm-5" >
-				<img src="images/logo.png " style="width:100%">
-			</div>
-			<div class=" col-md-1 col-sm-0" ></div>
-			<div class="Account col-md-4 col-sm-5" >
-			<button class="login btn btn-outline-success"   ><a   style="text-decoration: none; color: green;font-weight:bold;"href=
-				'<?php
-						if (isset($_SESSION['login']) ) {
-							if($_SESSION['login']) echo "index.php?quanly=user";
-							else echo "giaodien/login.php";
-							}
-						else echo "giaodien/login.php";
-				?>'
-			>
-			<?php 
-				if (isset($_SESSION['login']) ) {
-					if($_SESSION['login']) echo '<i class="fas fa-user-alt"></i> '.$_SESSION['customer_name'].""; 
-					
-					else echo "Đăng Nhập";
-				}
-				else echo "Đăng Nhập";
-
-			?>	</a></button>
-			<button class="btn btn-outline-danger register" ><a class="register" style="text-decoration: none; color: red;font-weight:bold;" href=
-				'<?php
-					if (isset($_SESSION['login']) ) {
-						if($_SESSION['login']) echo "giaodien/logout.php";
-						else echo "giaodien/register.php";
-						}
-					else echo "giaodien/register.php";
-				?>'
-			>
-				<?php
-					if (isset($_SESSION['login']) ) {
-						if($_SESSION['login']) echo "Đăng Xuất"; 
-						  
-						else echo "Đăng Ký";
-					}
-					else echo "Đăng Ký";
-
-				?>
-			</a> </button>
-			
-			</div>
-			
+<div class="container-fluid footer">
+	<div class="row footer-content">
+        <div class="col-md-1 col-sm-0"></div>
+		<div class="col-md-5 col-sm-12">
+            <h5>LIÊN HỆ</h5>
+            <hr style="width: 17%;">
+			<p><i class="fas fa-phone"></i> Hotline:0985573137</p>
+			<p><i class="fas fa-calendar"></i> (6h30 - 22h30 từ Thứ 2 đến Chủ Nhật)</p>
+			<p><i class="fas fa-mail-bulk"></i> Email: lelinhplt@gmail.com</p>
+			<p><i class="fas fa-map-marker-alt"></i> Địa chỉ: Số 10, đường Trần Phú, Hà Đông, Hà Nội</p>
 		</div>
-		
-		
-	</header>
+		<div class="col-md-5 col-sm-12">
+			<h5>TRUY CẬP NHANH</h5>
+            <hr style="width: 55%;">
+			<a class="link-shortcut" href="index.php"> <i class="fas fa-chevron-circle-right"></i>Trang Chủ</a>
+			<a class="link-shortcut" href="index.php?quanly=product"> <i class="fas fa-chevron-circle-right"></i>Sản Phẩm</a>
+			<a class="link-shortcut" href="index.php?quanly=sale"> <i class="fas fa-chevron-circle-right"></i>Khuyến Mãi</a>	
+			<a class="link-shortcut" href="#"> <i class="fas fa-chevron-circle-right"></i>Tin Tức</a>			
+			<a class="link-shortcut" href="#"> <i class="fas fa-chevron-circle-right"></i>Chăm Sóc Khách Hàng</a>
+			<a class="link-shortcut" href="#"> <i class="fas fa-chevron-circle-right"></i>Chính Sách Đổi Trả</a>
+			<a class="link-shortcut" href="#"> <i class="fas fa-chevron-circle-right"></i>Chính Sách Bảo Hành Sản Phẩm</a>
+		</div>
+        <div class="col-md-1 col-sm-0"></div>
+	</div>
+</div>
