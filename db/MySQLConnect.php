@@ -4,10 +4,10 @@
     $pass = '';
     $database = 'website';
 
-    $conn = new mysqli($server, $user, $pass, $database);
-    $conn -> set_charset("utf8");
+    $connect = new mysqli($server, $user, $pass, $database);
+    $connect -> set_charset("utf8");
     //kiểm tra kết nối 
-    if($conn->connect_error){
+    if($connect->connect_error){
         var_dump($connect->connect_error);
         echo "\n Kết Nối DB thất bại";
         die();

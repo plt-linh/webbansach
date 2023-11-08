@@ -12,7 +12,7 @@
                     <input type="text" class="form-control" id="name" placeholder="Nhập tên sách">
                 </div>
                 <div class="col-auto">
-                    <button type="submit" class="btn btn-outline-secondary">Tìm kiếm</button>
+                    <button type="submit" class="btn btn-outline-secondary" id="submitSearch" onclick="validatePrice()">Tìm kiếm</button>
                 </div>
             </form>
         </div>
