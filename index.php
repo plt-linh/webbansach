@@ -12,10 +12,6 @@
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/css/all.min.css">
     <link rel="stylesheet" type="text/css" href="index.css">
-    <link rel="stylesheet" type="text/css" href="css/index_product.css">
-    <link rel="stylesheet" type="text/css" href="css/user.css">
-    <link rel="stylesheet" type="text/css" href="css/products.css">
-    <link rel="stylesheet" type="text/css" href="css/detail.css">
     <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
 
     <style>
@@ -31,14 +27,17 @@
          <!-- header -->
         <?php require("interfaces/header.php"); ?>
         
+        <!-- test -->
+    
         <!-- content -->
-        <div class="content">
-            <?php
-                include("interfaces/allproducts.php");
-            ?>
+        <div class="content row g2" >
+            <div class="left-container col-md-3">
+                <?php require("interfaces/product_filter.php"); ?>
+            </div>
+            <div class="right-container col-md-9">
+                <?php require("interfaces/all_products.php"); ?>
+            </div>
         </div>
-        
-
         <!-- footer -->
         <?php 
             require("interfaces/footer.php");
