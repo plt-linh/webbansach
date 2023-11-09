@@ -42,8 +42,8 @@ html{
 <?php
     $queryCategory = "SELECT DISTINCT CATEGORY FROM products";
     $querySupplier = "SELECT DISTINCT SUPPLIER FROM products";
-    $getCategory=mysqli_query($conn,$queryCategory);
-    $getSupplier=mysqli_query($conn,$querySupplier);
+    $getCategory=mysqli_query($connect,$queryCategory);
+    $getSupplier=mysqli_query($connect,$querySupplier);
 ?>
 <script>
     function getresult(url) {
@@ -58,7 +58,7 @@ html{
     }
 </script>
 <!-- all products-->
-<div class="ads-grid py-sm-4 py-3 all-product">
+<div class="ads-grid py-sm-3 py-2 all-product">
     <div class="row">
         <script>
             getresult("interfaces/getresult.php<?php
@@ -74,7 +74,7 @@ html{
             <div class="side-bar p-sm-4 p-3">
                 <!-- category filter -->
                 <div class="category border-bottom py-2">
-                    <h6 class="text-secondary">Danh mục sản phẩm</h6>
+                    <h5 class="text-secondary">Danh mục sản phẩm</h5>
                     <a>
                         <?php
                             while($row_type_product=mysqli_fetch_array($getCategory)){
@@ -90,7 +90,7 @@ html{
                 </div>
                 <!-- price filter-->
                 <div class="range border-bottom py-3">
-                    <h6 class="text-secondary">Chọn khoảng giá</h6>
+                    <h5 class="text-secondary">Chọn khoảng giá</h5>
                     <form class="row g-3">
                         <div class="col-auto">
                             <input class="form-control form-control-sm" id="min_price" type="text" placeholder="0"/>
@@ -103,7 +103,7 @@ html{
                 </div>
                 <!-- supplier filter -->
                 <div class="left-side border-bottom py-3">
-                    <h6 class="text-secondary">Nhà xuất bản</h6>
+                    <h5 class="text-secondary">Nhà xuất bản</h5>
                     <a>
                         <?php
                             while($row_supplier_product=mysqli_fetch_array($getSupplier)){

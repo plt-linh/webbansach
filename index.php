@@ -11,8 +11,12 @@
     <title>Book Store</title>
     <link rel="stylesheet" type="text/css" href="bootstrap/css/bootstrap.min.css">
     <link rel="stylesheet" type="text/css" href="fonts/css/all.min.css">
+    <link rel="stylesheet" type="text/css" href="index.css">
+    <link rel="stylesheet" type="text/css" href="css/index_product.css">
+    <link rel="stylesheet" type="text/css" href="css/user.css">
     <link rel="stylesheet" type="text/css" href="css/products.css">
-    <!-- <link rel="stylesheet" type="text/css" href="index.css"> -->
+    <link rel="stylesheet" type="text/css" href="css/detail.css">
+    <script src="http://code.jquery.com/jquery-2.1.1.js"></script>
 
     <style>
         html {
@@ -26,26 +30,11 @@
     <div class="container-fluid index" id = "index">
          <!-- header -->
         <?php require("interfaces/header.php"); ?>
-        <!-- navigation -->
-        <script>
-            function showCartContainer(){
-                document.getElementById("cart_container").style.display="block";
-                var t=document.getElementById("productCart").childElementCount;
-                if(t>4){
-                    document.getElementById("titleCart").style.width="98.7%";
-                    document.getElementById("XSign_cart").style.color="black";
-                }
-                else{
-                    document.getElementById("titleCart").style.width="100%";	
-                    document.getElementById("XSign_cart").style.color="white";
-                }
-            }
-	    </script>
-        <?php require("interfaces/navigation.php"); ?>
+        
         <!-- content -->
         <div class="content">
             <?php
-                include("interfaces/products.php");
+                include("interfaces/allproducts.php");
             ?>
         </div>
         
@@ -55,7 +44,12 @@
             require("interfaces/footer.php");
         ?>
     </div>
-   
-    
+
+
+<script src="js/jquery-3.3.1.min.js"></script>
+<script src="bootstrap/js/bootstrap.min.js"></script>
+<script src="js/slide.js"></script>
+<script src="main.js"></script>   
+
 </body>
 </html>

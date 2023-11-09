@@ -12,5 +12,5 @@
         echo "\n Kết Nối DB thất bại";
         die();
     }
-    else echo "<br>";
+    else echo "";
 ?>
