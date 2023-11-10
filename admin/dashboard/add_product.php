@@ -18,8 +18,16 @@
         mysqli_query($connect, $sql);
 
         move_uploaded_file($image_tmp_name, '../../images/products/' . $image); // chuyển hình ảnh vào thư mục
+
+        header('location: ../index.php '); //quay lại trang quản lý sản phẩm
 }
 ?>
+
+<div class="row m-md-3">
+    <div class="title_left mt-3 mx-2">
+        <p>Chỉnh sửa sản phẩm</p>
+    </div>
+</div>
 <form action="add_product.php" method="POST" enctype="multipart/form-data">
     <p>Name</p>
     <input type="text" name="name">
