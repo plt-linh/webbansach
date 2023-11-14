@@ -21,16 +21,16 @@
                 <div class="col-auto">
                     <button class="btn btn-outline-secondary login"   ><a   style="text-decoration: none;font-weight:bold;"href=
                     '<?php
-                            if (isset($_SESSION['login']) ) {
-                                if($_SESSION['login']) echo "index.php?quanly=user";
-                                else echo "interfaces/login.php";
-                                }
+                        if (isset($_SESSION['login']) ) {
+                            if($_SESSION['login']) echo "index.php?quanly=user";
                             else echo "interfaces/login.php";
+                            }
+                        else echo "interfaces/login.php";
                     ?>'
                 >
                 <?php 
                     if (isset($_SESSION['login']) ) {
-                        if($_SESSION['login']) echo '<i class="fas fa-user-alt"></i> '.$_SESSION['customer_name'].""; 
+                        if($_SESSION['login']) echo $_SESSION['customer_name']; 
                         
                         else echo "Đăng Nhập";
                     }
@@ -38,14 +38,15 @@
 
                 ?>	</a></button>
                 </div>
+
                 <div class="col-auto">
                     <button class="btn btn-outline-secondary register" ><a class="register" style="text-decoration: none;font-weight:bold;" href=
                     '<?php
                         if (isset($_SESSION['login']) ) {
-                            if($_SESSION['login']) echo "giaodien/logout.php";
-                            else echo "giaodien/register.php";
+                            if($_SESSION['login']) echo "interfaces/logout.php";
+                            else echo "interfaces/register.php";
                             }
-                        else echo "giaodien/register.php";
+                        else echo "interfaces/register.php";
                     ?>'
                 >
                     <?php

@@ -1,6 +1,10 @@
 <?php
     session_start();
     include('db/MySQLConnect.php');
+
+    if(!isset($_SESSION['customer_name'])) {
+        header('loaction:interfaces/login.php');
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -30,14 +34,18 @@
         <!-- test -->
     
         <!-- content -->
-        <div class="content row g2" >
-            <div class="left-container col-md-3">
-                <?php require("interfaces/product_filter.php"); ?>
-            </div>
-            <div class="right-container col-md-9">
-                <?php require("interfaces/all_products.php"); ?>
-            </div>
-        </div>
+        <div class="content">
+            <?php
+                require("interfaces/all_products.php");
+                // if($_GET['manage'] == 'user') {
+                //     require("intefaces/user.php");
+                // }
+                // elseif($_GET['manage'] == 'product') {
+                //     require("intefaces/");
+                // }
+            ?>
+
+
         <!-- footer -->
         <?php 
             require("interfaces/footer.php");

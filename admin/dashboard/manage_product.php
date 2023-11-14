@@ -97,8 +97,8 @@
                         <td style="width:30%; text-align:left"><?php echo $products['DESCRIPTION'] ?></td>
                         <td style="width:10%"><?php echo $products['IMAGE_URL'] ?></td>
                         <td>
-                            <a href="dashboard/edit_product.php?this_id=<?php echo $products['PRODUCT_ID'] ?>" class="btn btn-primary" style="font-size:12px">Sửa</a>
-                            <a href="dashboard/delete_product.php?this_id=<?php echo $products['PRODUCT_ID'] ?>" class="btn btn-danger" style="font-size:12px">Xóa</a>
+                            <a href="dashboard/edit_product.php?id=<?php echo $products['PRODUCT_ID'] ?>" class="btn btn-primary" style="font-size:12px">Sửa</a>
+                            <a href="dashboard/delete_product.php?id=<?php echo $products['PRODUCT_ID'] ?>" class="btn btn-danger" style="font-size:12px">Xóa</a>
                         </td>
                     </tr>
                     <?php endforeach; ?>

@@ -2,10 +2,10 @@
 
     include "../../db/MySQLConnect.php";
 
-    $this_id = $_GET['this_id'];
+    $id = $_GET['id'];
 
 
-    $sql = "SELECT * FROM products WHERE PRODUCT_ID = " . $this_id;
+    $sql = "SELECT * FROM products WHERE PRODUCT_ID = " . $id;
 
     $querry = mysqli_query($connect, $sql);
 
@@ -24,7 +24,7 @@
         $image_tmp_name =$_FILES['image']['tmp_name']; //tmp_name để lấy đường dẫn của hình ảnh
 
         $sql = "UPDATE products SET PRODUCT_NAME='$name', AUTHOR='$author', CATEGORY='$category', SUPPLIER='$supplier', QUANTITY='$quantity', PRICE='$price', IMAGE_URL='$image'
-        WHERE PRODUCT_ID=".$this_id;
+        WHERE PRODUCT_ID=".$id;
 
         mysqli_query($connect,$sql);
 
