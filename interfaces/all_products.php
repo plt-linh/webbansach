@@ -1,7 +1,15 @@
 <?php
-include("db/MySQLConnect.php");
-$sql = "SELECT * FROM products";
-$result = mysqli_query($connect, $sql);
+    $connect = new mysqli('localhost','root','', 'website');
+    $connect -> set_charset("utf8");
+    //kiểm tra kết nối 
+    if($connect->connect_error){
+        var_dump($connect->connect_error);
+        echo "\n Kết Nối DB thất bại";
+        die();
+    }
+    else echo "";
+    $sql = "SELECT * FROM products";
+    $result = mysqli_query($connect, $sql);
 ?>
 <?php
     $queryCategory = "SELECT DISTINCT CATEGORY FROM products";
@@ -22,9 +30,11 @@ $result = mysqli_query($connect, $sql);
     }
 </script>
 
+
+
 <div class="container-fluid index row g-2">
 
-    <div class="left-container row col-3 ">
+    <div class="left-container row col-lg-2 col-sm-3 col-md-3">
         <script>
             getresult("interfaces/getresult.php<?php
                 $check=isset($_GET['type']);
@@ -34,7 +44,7 @@ $result = mysqli_query($connect, $sql);
                 }
             ?>")
         </script>
-        <div class="side-bar p-sm-4 p-3">
+        <from class="side-bar p-sm-4 p-3" id="form-search-product" method="POST">
             <!-- category filter -->
             <div class="category border-bottom py-2">
                 <h5 class="text-secondary">Danh mục sản phẩm</h5>
@@ -43,7 +53,7 @@ $result = mysqli_query($connect, $sql);
                         while($row_type_product=mysqli_fetch_array($getCategory)){
                     ?>
                     <label>
-                        <input type="checkbox" class="type" value="<?php echo $row_type_product['CATEGORY']; ?>">
+                        <input type="checkbox" class="type" id="category" value="<?php echo $row_type_product['CATEGORY']; ?>">
                         <span class="span"><?php echo $row_type_product['CATEGORY'] ?> </span>
                     </label>
                     <br>
@@ -52,20 +62,6 @@ $result = mysqli_query($connect, $sql);
                     ?>
                 </a>
             </div>
-            <!-- price filter-->
-            <div class="range border-bottom py-3">
-                <h5 class="text-secondary">Chọn khoảng giá</h5>
-                <form class="row g-3">
-                    <div class="col-auto">
-                        <input class="form-control form-control-sm" id="min_price" type="text" placeholder="0"/>
-                    </div>
-                    <div class="col-auto" type="plaintext">-</div>
-                    <div class="col-auto">
-                        <input class="form-control form-control-sm" id="min_price" type="text" placeholder="0"/>
-                    </div>
-                </form>
-            </div>
-            <!-- supplier filter -->
             <div class="left-side border-bottom py-3">
                 <h5 class="text-secondary">Nhà xuất bản</h5>
                 <a>
@@ -82,21 +78,21 @@ $result = mysqli_query($connect, $sql);
                     ?>
                 </a>
             </div>
-        </div>
+        </from>
     </div>
 
-    <div class="right-container row col-9">
+    <div class="right-container row col-lg-10 col-sm-9">
         <?php
         while($row = mysqli_fetch_array($result)) {
         ?>
         <div class="book col-md-3 mt-3">
             <div class="thumbnail text-center">
-                <a href="product_detail.php?product_id=<?php echo $row['PRODUCT_ID']; ?>">
+                <a href="index.php?manage=detail&product_id=<?php echo $row['PRODUCT_ID']; ?>">
                     <img class="mt-2" src="images/products/<?php echo $row['IMAGE_URL'];?>" alt="<?php echo $row['PRODUCT_NAME'];?>" style="width:100%">
                 </a>
                 <div class="caption mt-2">
                     <h5><?php echo $row['PRODUCT_NAME'];?></h5>
-                    <h5 style="color:red; "><?php echo number_format($row['PRICE'], 0, '', ' ') . " VNĐ";?></h5>
+                    <h5 style="color:red; "><?php echo number_format($row['PRICE'], 0, '', ' ') . " ₫";?></h5>
                 </div>
             </div>
         </div>
@@ -107,6 +103,50 @@ $result = mysqli_query($connect, $sql);
 
 </div>
 
+<script>
+    $(document).ready(function() {
+        // Sự kiện change cho checkbox category
+        $('.type').change(function() {
+            handleCheckboxChange();
+        });
+
+        // Sự kiện change cho checkbox supplier
+        $('.supplier').change(function() {
+            handleCheckboxChange();
+        });
+
+        function handleCheckboxChange() {
+            // Tạo một đối tượng để lưu trữ giá trị của checkbox
+            var filters = {
+                category: [],
+                supplier: []
+            };
+
+            // Lặp qua tất cả checkbox category
+            $('.type:checked').each(function() {
+                filters.category.push($(this).val());
+            });
+
+            // Lặp qua tất cả checkbox supplier
+            $('.supplier:checked').each(function() {
+                filters.supplier.push($(this).val());
+            });
+
+            // Gọi hàm AJAX với các giá trị của checkbox
+            getresult("interfaces/getresult.php?category=" + filters.category.join(',') + "&supplier=" + filters.supplier.join(','));
+        }
+
+        function getresult(url) {
+            $.ajax({
+                url: url,
+                type: "GET",
+                success: function(data) {
+                    $(".right-container").html(data);
+                }
+            });
+        }
+    });
+</script>
 <style>
     .thumbnail {
         background-color: white;
